@@ -1,0 +1,13 @@
+- flash.each do |key, message|
+  .container#flash
+    .row
+      .col-sm
+      .col-sm-8
+        %div{class:"alert alert-#{key.to_sym} position-absolute w-100 text-center z-100", role: "alert"}
+          = message
+      .col-sm
+
+:javascript
+  $(document).ready( function() {
+        $('#flash').delay(3000).fadeOut();
+  });

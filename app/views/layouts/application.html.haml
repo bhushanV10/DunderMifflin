@@ -8,6 +8,8 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    = render partial: 'layouts/assets'
     = render partial: 'layouts/header'
     .container
+      = render('layouts/flash', :flash => flash) unless flash.nil? || flash.empty?
       = yield

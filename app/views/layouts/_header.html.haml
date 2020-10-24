@@ -1,4 +1,8 @@
-%header.header.pb-5
-  .row.bg-secondary
-    .col-sm-3
-      = image_pack_tag "media/images/dunder_mifflin.jpg", class: "img-fluid"
+%header.header.pb-3
+  .row.bg-light
+    %a.col-sm-3{href: "/", "data-turbolinks": "false"}
+      = image_pack_tag 'dunder_mifflin.jpg', class: 'img-fluid'
+    .form-inline.offset-sm-7
+      = link_to "Companies", companies_path, class: 'btn btn-outline-primary rounded-0'
+      %div.pl-2
+        = link_to "Users", users_path, class: 'btn btn-outline-success rounded-0 pl-2'

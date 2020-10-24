@@ -1,0 +1,31 @@
+%h3 Companies
+%br
+.row
+  .col.form-group
+    %table.table-responsive-sm.table.table-striped.table-bordered.text-center#companies-table
+      %thead
+        %tr
+          %th Name
+          %th Role
+          %th Created at
+          %th Updated at
+          %th Action
+        %tbody
+          - @companies.each do |company|
+            %tr
+              %td=company.name
+              %td=company.role.titleize
+              %td=company.created_at
+              %td=company.updated_at
+              %td= link_to '<i class="fa fa-trash text-danger"></i>'.html_safe, company_path(company), :title => "Delete", data: { method: :delete, confirm: 'Are you sure?' }
+
+.row
+  .col.col-sm
+    = link_to "Add Company", new_company_path, class: 'btn btn-primary rounded-0'
+
+:javascript
+  $(document).ready(function() {
+    $('#companies-table').DataTable({
+      order: [[ 3, 'desc' ]]
+    });
+  });

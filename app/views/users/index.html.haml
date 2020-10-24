@@ -1,0 +1,33 @@
+%h3 Companies
+%br
+.row
+  .col.form-group
+    %table.table-responsive-sm.table.table-striped.table-bordered.text-center#users-table
+      %thead
+        %tr
+          %th Name
+          %th Company
+          %th Role
+          %th Created at
+          %th Updated at
+          %th Action
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td=user.name
+              %td=user.company.name
+              %td=user.role.titleize
+              %td=user.created_at
+              %td=user.updated_at
+              %td= link_to '<i class="fa fa-trash text-danger"></i>'.html_safe, user_path(user), :title => "Delete", data: { method: :delete, confirm: 'Are you sure?' }
+
+.row
+  .col.col-sm
+    = link_to "Add User", new_user_path, class: 'btn btn-primary rounded-0'
+
+:javascript
+  $(document).ready(function() {
+    $('#users-table').DataTable({
+      order: [[ 4, 'desc' ]]
+    });
+  });

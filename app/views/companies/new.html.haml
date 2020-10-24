@@ -1,0 +1,18 @@
+%h3
+  New company
+%br
+.row
+  .col-sm
+    = form_with model: @company, method: :post do |f|
+      .form-group
+        .row
+          .col-sm-6
+            = f.text_field :name, class: 'form-control', placeholder: "Name"
+      .form-group
+        .row
+          .col-sm-6
+            = f.select :role, options_for_select(Company.roles.keys.map {|key| [key.titleize, key]}), {include_blank: "Select Role"}, class: 'form-control'
+      .form-group
+        .row
+          .col-sm
+            = f.submit "Create", class: 'btn btn-success rounded-0'

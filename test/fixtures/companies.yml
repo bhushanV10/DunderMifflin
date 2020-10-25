@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Dunder Mifflin
   role: 1
 
 two:
-  name: MyString
-  role: 1
+  name: Sabre
+  role: 0

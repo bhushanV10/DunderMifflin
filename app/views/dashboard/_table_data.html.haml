@@ -1,0 +1,27 @@
+%table.table-responsive-sm.table.table-striped.table-bordered.text-center#dashboard-table
+  %thead
+    %tr
+      %th Id
+      %th Name
+      %th User Count
+      %th Created at
+      %th Updated at
+  %tbody
+    - if @companies.present?
+      - @companies.each do |company|
+        %tr
+          %td= company.id
+          %td=company.name
+          %td=company.users_count
+          %td=company.created_at.strftime('%F')
+          %td=company.updated_at.strftime('%F')
+    - else
+      %td.text-center{:colspan => "5"}
+        No records found.
+
+:javascript
+  $(document).ready(function() {
+    $('#dashboard-table').DataTable({
+      order: []
+    });
+  });

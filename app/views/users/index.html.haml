@@ -17,8 +17,8 @@
               %td=user.name
               %td=user.company.name
               %td=user.role.titleize
-              %td=user.created_at
-              %td=user.updated_at
+              %td=user.created_at.strftime('%F')
+              %td=user.updated_at.strftime('%F')
               %td= link_to '<i class="fa fa-trash text-danger"></i>'.html_safe, user_path(user), :title => "Delete", data: { method: :delete, confirm: 'Are you sure?' }
 
 .row

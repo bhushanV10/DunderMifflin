@@ -1,1 +1,47 @@
+.row.pl-3.pr-3
+  .col-sm-4.border
+    %h3.text-center
+      Companies
+    .row
+      - Company.roles.each do |role|
+        .col-sm.text-center
+          =role.first.titleize
+          %h4
+            = Company.where(role: role).count
+          = link_to "Filter", "javascript:filter_data('Company', '#{role.first}')"
 
+  .col-sm-1
+  .col-sm-7.border
+    %h3.text-center
+      Users
+    .row
+      - User.roles.each do |role|
+        .col-sm.text-center
+          =role.first.titleize
+          %h4
+            = User.where(role: role).count
+          = link_to "Filter", "javascript:filter_data('User', '#{role.first}')"
+.row
+  .col.form-group
+    .text-right
+      = link_to "Reset", "javascript:filter_data('reset', '')"
+.row
+  .col.form-group
+    #table-data
+      = render "table_data"
+
+.row
+  .col.col-sm
+    = link_to "Add Company", new_company_path, class: 'btn btn-primary rounded-0'
+
+:javascript
+  function filter_data(filter_type, role) {
+    $.ajax({
+        url: "#{filter_data_dashboard_index_path}",
+        type: "GET",
+        dataType: "script",
+        data: {
+        "filter_type": filter_type,
+        "role": role }
+      });
+  }

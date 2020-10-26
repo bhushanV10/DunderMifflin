@@ -3,30 +3,30 @@
     %h3.text-center
       Companies
     .row
-      - Company.roles.each do |role|
+      - Company.roles.each do |role, index|
         .col-sm.text-center
-          =role.first.titleize
+          =role.titleize
           %h4
-            - if @companies_by_role.has_key? role.first
-              = @companies_by_role[role.first]
+            - if @companies_by_role.has_key? role
+              = @companies_by_role[role]
             - else
               0
-          = link_to "Filter", "javascript:filter_data('Company', '#{role.first}')"
+          = link_to "Filter", "javascript:filter_data('Company', '#{role}')"
 
   .col-sm-1
   .col-sm-7.border
     %h3.text-center
       Users
     .row
-      - User.roles.each do |role|
+      - User.roles.each do |role, index|
         .col-sm.text-center
-          =role.first.titleize
+          =role.titleize
           %h4
-            - if @users_by_role.has_key? role.first
-              = @users_by_role[role.first]
+            - if @users_by_role.has_key? role
+              = @users_by_role[role]
             - else
               0
-          = link_to "Filter", "javascript:filter_data('User', '#{role.first}')"
+          = link_to "Filter", "javascript:filter_data('User', '#{role}')"
 .row
   .col.form-group
     .text-right

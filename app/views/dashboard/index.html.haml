@@ -7,7 +7,10 @@
         .col-sm.text-center
           =role.first.titleize
           %h4
-            = Company.where(role: role).count
+            - if @companies_by_role.has_key? role.first
+              = @companies_by_role[role.first]
+            - else
+              0
           = link_to "Filter", "javascript:filter_data('Company', '#{role.first}')"
 
   .col-sm-1
@@ -19,7 +22,10 @@
         .col-sm.text-center
           =role.first.titleize
           %h4
-            = User.where(role: role).count
+            - if @users_by_role.has_key? role.first
+              = @users_by_role[role.first]
+            - else
+              0
           = link_to "Filter", "javascript:filter_data('User', '#{role.first}')"
 .row
   .col.form-group

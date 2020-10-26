@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  has_many :users
+  has_many :users, dependent: :destroy
 
   enum role: [:buyer, :supplier]
 
@@ -9,5 +9,6 @@ class Company < ApplicationRecord
   scope :all_companies, -> {joins(:users).distinct.select("companies.*, count(users.*) as users_count").group(:id).order(users_count: :desc, name: :asc).limit(10)}
   scope :filter_by_company_role, ->(role) { joins(:users).where(role: role).distinct.select("companies.*, count(users.*) as users_count").group(:id).order(users_count: :desc, name: :asc).limit(10)}
   scope :filter_by_user_role, ->(role) { joins(:users).where("users.role": role).distinct.select("companies.*, count(users.*) as users_count").group(:id).order(users_count: :desc, name: :asc).limit(10)}
+  scope :company_roles_count, -> {group(:role).count}
 
 end

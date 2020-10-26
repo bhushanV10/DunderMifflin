@@ -21,7 +21,8 @@ class CompaniesController < ApplicationController
 
   def destroy
     @company = Company.find(params[:id])
-    if @company.delete
+    @company.destroy
+    if @company.destroyed?
       flash[:success] = 'Company deleted!'
     else
       flash[:danger] = 'Failed to delete company!'

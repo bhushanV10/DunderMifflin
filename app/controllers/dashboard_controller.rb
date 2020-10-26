@@ -2,6 +2,8 @@ class DashboardController < ApplicationController
 
   def index
     @companies = Company.all_companies
+    @companies_by_role = Company.company_roles_count
+    @users_by_role = User.user_roles_count
   end
 
   def filter_data

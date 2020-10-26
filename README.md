@@ -14,6 +14,4 @@ Database setup:
 
 4. Go to project folder in terminal and run the following commands -
 
-        rake db:create
-        rake db:schema:load
-        rake db:seed
+        rake db:setup
